@@ -1,20 +1,26 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Home from '../containers/Home';
-
+import About from './About';
+import NoMatch from './NoMatch';
 const App = () => {
     return (
         <div>
             <ul>
                 <li>
-                    <Link to="/">Homes</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>
                 </li>
+                <li><Link to="/howareyou">No Match</Link></li>
             </ul>
             <div></div>
-            <Route exact path="/" component={Home}/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/about" component={About}/>
+                <Route component={NoMatch}/>
+            </Switch>
         </div>
     )
 }
